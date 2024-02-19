@@ -1,5 +1,4 @@
 import ImageMasonary from '@/Components/UI/Masonary';
-import Container from '@/Components/UI/container';
 import { ImageTypes } from '@/enums/enums';
 
 export default function Portraits() {
