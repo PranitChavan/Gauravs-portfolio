@@ -15,9 +15,8 @@ function Home() {
           </Fade>
           <Main />
         </Container>
-        <Fade direction="up" triggerOnce>
-          <ImageMasonary />
-        </Fade>
+
+        <ImageMasonary />
       </div>
     </>
   );
