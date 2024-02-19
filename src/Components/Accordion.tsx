@@ -10,7 +10,9 @@ export default function CustomAccordion() {
           <AccordionContent className="text-start border-b underline">
             <Link to="/portraits">Portraits</Link>
           </AccordionContent>
-          <AccordionContent className="text-start border-b underline">Backgrounds</AccordionContent>
+          <AccordionContent className="text-start border-b underline">
+            <Link to="/backgrounds">Backgrounds</Link>
+          </AccordionContent>
         </AccordionItem>
       </Accordion>
     </>

@@ -13,7 +13,7 @@ export default function NavItems() {
                 <Link to="/portraits">
                   <li className="leading-7 inline font-semibold cursor-pointer hover:border-b border-white">PORTRAITS</li>
                 </Link>
-                <Link to="">
+                <Link to="/backgrounds">
                   <li className="leading-7 font-semibold cursor-pointer hover:border-b border-white">BACKGROUNDS</li>
                 </Link>
               </ul>
