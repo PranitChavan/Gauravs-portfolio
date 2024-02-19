@@ -1,4 +1,5 @@
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from './navigation-menu';
+import { Link } from 'react-router-dom';
 
 export default function NavItems() {
   return (
@@ -8,13 +9,13 @@ export default function NavItems() {
           <NavigationMenuItem>
             <NavigationMenuTrigger>ILLUSTRATION</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="p-5">
-                <a>
-                  <li className="leading-7 font-semibold cursor-pointer pb-2 ">BACKGROUNDS</li>
-                </a>
-                <a>
-                  <li className="leading-7 font-semibold cursor-pointer">PORTRAITS</li>
-                </a>
+              <ul className="p-4">
+                <Link to="/portraits">
+                  <li className="leading-7 inline font-semibold cursor-pointer hover:border-b border-white">PORTRAITS</li>
+                </Link>
+                <Link to="">
+                  <li className="leading-7 font-semibold cursor-pointer hover:border-b border-white">BACKGROUNDS</li>
+                </Link>
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>

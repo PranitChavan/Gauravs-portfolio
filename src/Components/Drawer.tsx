@@ -1,4 +1,4 @@
-import MobileAccordion from './Accordion';
+import CustomAccordion from './Accordion';
 import { Drawer, DrawerContent, DrawerTrigger } from './UI/drawer';
 
 export default function MobileDrawer() {
@@ -14,7 +14,7 @@ export default function MobileDrawer() {
         </DrawerTrigger>
         <DrawerContent>
           <div className="flex flex-col items-center p-2">
-            <MobileAccordion />
+            <CustomAccordion />
             <div className="my-2 font-medium text-1xl">ABOUT</div>
           </div>
         </DrawerContent>
