@@ -1,7 +1,12 @@
 import ImageMasonary from '@/Components/UI/Masonary';
 import { ImageTypes } from '@/enums/enums';
+import { useEffect } from 'react';
 
 export default function Backgrounds() {
+  useEffect(() => {
+    document.title = 'Backgrounds';
+  }, []);
+
   return (
     <>
       <div className="lg:container">
