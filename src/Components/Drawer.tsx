@@ -37,11 +37,12 @@ export default function MobileDrawer() {
               <span className={`px-4 py-2 hover:bg-gray-700 block text-xl ${pathname === '/backgrounds' && 'underline underline-offset-4'}`}>Backgrounds</span>
             </Link>
           </div>
-          <div className="p-4 border-t border-gray-600 hover:bg-gray-700">
-            <Link to="/about">
+
+          <Link to="/about">
+            <div className="p-4 border-t border-gray-600 hover:bg-gray-700">
               <span className={`font-bold text-xl ${pathname === '/about' && 'underline underline-offset-4'}`}>ABOUT</span>
-            </Link>
-          </div>
+            </div>
+          </Link>
         </DrawerContent>
       </Drawer>
     </>
