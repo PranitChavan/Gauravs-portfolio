@@ -9,6 +9,7 @@ import Portraits from './Pages/Portraits.tsx';
 import heroImage from './assets/All/all-3.webp';
 import { useLocation } from 'react-router-dom';
 import Backgrounds from './Pages/Backgrounds.tsx';
+import About from './Pages/About.tsx';
 
 const AppLayout = () => {
   const location = useLocation();
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: '/backgrounds',
         element: <Backgrounds />,
+      },
+      {
+        path: '/about',
+        element: <About />,
       },
     ],
   },
