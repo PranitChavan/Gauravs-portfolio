@@ -1,4 +1,4 @@
-import ImageMasonary from '@/Components/UI/Masonary';
+import ImageMasonary from '@/Components/Masonary';
 import { ImageTypes } from '@/enums/enums';
 import { useEffect } from 'react';
 
