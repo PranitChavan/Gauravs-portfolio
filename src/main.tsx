@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import Home from './Pages/Home.tsx';
 import Navbar from './Components/Navbar.tsx';
@@ -9,7 +9,8 @@ import Portraits from './Pages/Portraits.tsx';
 import heroImage from './assets/All/all-10.webp';
 import { useLocation } from 'react-router-dom';
 import Backgrounds from './Pages/Backgrounds.tsx';
-import About from './Pages/About.tsx';
+
+const About = React.lazy(() => import('@/Pages/About.tsx'));
 
 const AppLayout = () => {
   const location = useLocation();
@@ -49,7 +50,17 @@ const router = createBrowserRouter([
       },
       {
         path: '/about',
-        element: <About />,
+        element: (
+          <Suspense
+            fallback={
+              <div className="flex justify-center items-center h-dvh">
+                <h1>Loading...</h1>
+              </div>
+            }
+          >
+            <About />
+          </Suspense>
+        ),
       },
     ],
   },
