@@ -1,6 +1,7 @@
 import { CustomAccordion } from '@/Components/Accordion';
 import { Fade } from 'react-awesome-reveal';
 import { useEffect } from 'react';
+import { Spotlight } from '@/Components/UI/spotlight';
 
 export default function About() {
   useEffect(() => {
@@ -9,6 +10,7 @@ export default function About() {
 
   return (
     <>
+      <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
       <Fade delay={500} duration={500} triggerOnce={true}>
         <div className="lg:max-w-3xl lg:m-auto container">
           <section className="my-16">
