@@ -1,5 +1,5 @@
 import Container from '@/Components/UI/container';
-import ImageMasonary from '@/Components/UI/Masonary';
+import ImageMasonary from '@/Components/Masonary';
 import Main from '@/Components/Main';
 import { ImageTypes } from '@/enums/enums';
 import { useEffect } from 'react';
