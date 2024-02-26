@@ -6,7 +6,7 @@ import './index.css';
 import { ThemeProvider } from './Components/UI/theme-provider.tsx';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import Portraits from './Pages/Portraits.tsx';
-import heroImage from './assets/All/all-2.webp';
+import heroImage from './assets/All/all-10.webp';
 import { useLocation } from 'react-router-dom';
 import Backgrounds from './Pages/Backgrounds.tsx';
 import About from './Pages/About.tsx';
