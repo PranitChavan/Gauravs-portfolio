@@ -1,6 +1,6 @@
 import { Drawer, DrawerContent, DrawerTrigger } from './UI/drawer';
 import { useEffect, useState } from 'react';
-import { ChevronDownIcon } from '@radix-ui/react-icons';
+import { ChevronDownIcon } from '@/assets/Svgs';
 import { Link, useLocation } from 'react-router-dom';
 import { MenuIcon } from '@/assets/Svgs';
 
