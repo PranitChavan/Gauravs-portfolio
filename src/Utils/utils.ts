@@ -1,36 +1,38 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { ImageTypes } from '@/enums/enums';
+import { imageConfig } from '@/config/imageConfig';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+/**
+ * Get image URLs based on the image type
+ * Uses the imageConfig to determine which images to load and in what order
+ */
 export function getImageUrls(type: ImageTypes): string[] {
-  const allImageUrls: string[] = [];
-  const portraitImageUrls: string[] = [];
-  const backgroundImageUrls: string[] = [];
+  let imageFilenames: readonly string[] = [];
+  let assetPath: string;
 
-  if (type === 'ALL') {
-    for (let i = 1; i <= 39; i++) {
-      allImageUrls.push(new URL(`../assets/All/all-${i}.webp`, import.meta.url).href);
-    }
-    return allImageUrls;
+  switch (type) {
+    case 'ALL':
+      imageFilenames = imageConfig.ALL;
+      assetPath = '../assets/All';
+      break;
+    case 'PORTRAITS':
+      imageFilenames = imageConfig.PORTRAITS;
+      assetPath = '../assets/Portraits';
+      break;
+    case 'BACKGROUNDS':
+      imageFilenames = imageConfig.BACKGROUNDS;
+      assetPath = '../assets/Backgrounds';
+      break;
+    default:
+      return [];
   }
 
-  if (type === 'PORTRAITS') {
-    for (let i = 1; i <= 13; i++) {
-      portraitImageUrls.push(new URL(`../assets/Portraits/p-${i}.webp`, import.meta.url).href);
-    }
-    return portraitImageUrls;
-  }
-
-  if (type === 'BACKGROUNDS') {
-    for (let i = 1; i <= 2; i++) {
-      backgroundImageUrls.push(new URL(`../assets/Backgrounds/bg-${i}.webp`, import.meta.url).href);
-    }
-    return backgroundImageUrls;
-  }
-
-  return [];
+  return imageFilenames.map((filename) => 
+    new URL(`${assetPath}/${filename}`, import.meta.url).href
+  );
 }
