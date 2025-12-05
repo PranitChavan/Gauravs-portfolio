@@ -8,10 +8,8 @@ export default function Backgrounds() {
   }, []);
 
   return (
-    <>
-      <div className="lg:container">
-        <ImageMasonary className="mt-14 lg:mt-28 justify-center" imageType={ImageTypes.BACKGROUNDS} lowImageQuantity={true} />
-      </div>
-    </>
+    <div className="lg:container">
+      <ImageMasonary className="mt-14 lg:mt-28 justify-center" imageType={ImageTypes.BACKGROUNDS} />
+    </div>
   );
 }

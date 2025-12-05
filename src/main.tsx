@@ -14,20 +14,27 @@ const About = React.lazy(() => import('@/Pages/About.tsx'));
 
 const AppLayout = () => {
   const location = useLocation();
-
-  if (location.pathname === '/') {
-    return (
-      <div className="md:h-screen h-dvh bg-no-repeat bg-start bg-cover bg-blend-overlay bg-black/40" style={{ backgroundImage: `url(${heroImage})` }}>
-        <Navbar />
-        <Outlet />
-      </div>
-    );
-  }
+  const isHomePage = location.pathname === '/';
 
   return (
     <>
-      <Navbar />
-      <Outlet />
+      {isHomePage && (
+        <div 
+          className="md:h-screen h-dvh bg-no-repeat bg-start bg-cover bg-blend-overlay bg-black/40" 
+          style={{ backgroundImage: `url(${heroImage})` }}
+          role="img"
+          aria-label="Hero background illustration"
+        >
+          <Navbar />
+          <Outlet />
+        </div>
+      )}
+      {!isHomePage && (
+        <>
+          <Navbar />
+          <Outlet />
+        </>
+      )}
     </>
   );
 };
@@ -53,8 +60,9 @@ const router = createBrowserRouter([
         element: (
           <Suspense
             fallback={
-              <div className="flex justify-center items-center h-dvh">
-                <h1>Loading...</h1>
+              <div className="flex justify-center items-center h-dvh" role="status" aria-label="Loading about page">
+                <h1 className="sr-only">Loading...</h1>
+                <div className="animate-pulse text-lg">Loading...</div>
               </div>
             }
           >

@@ -7,42 +7,48 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// Pre-load all images using Vite's import.meta.glob for proper production builds
+
 const allImages = import.meta.glob('../assets/All/*.webp', { eager: true, as: 'url' });
 const portraitImages = import.meta.glob('../assets/Portraits/*.webp', { eager: true, as: 'url' });
 const backgroundImages = import.meta.glob('../assets/Backgrounds/*.webp', { eager: true, as: 'url' });
 
-/**
- * Get image URLs based on the image type
- * Uses the imageConfig to determine which images to load and in what order
- */
+
+const createImageLookupMap = (imageMap: Record<string, string>): Map<string, string> => {
+  const lookup = new Map<string, string>();
+  Object.entries(imageMap).forEach(([path, url]) => {
+    const filename = path.split('/').pop() || '';
+    lookup.set(filename, url);
+  });
+  return lookup;
+};
+
+const allImagesLookup = createImageLookupMap(allImages);
+const portraitImagesLookup = createImageLookupMap(portraitImages);
+const backgroundImagesLookup = createImageLookupMap(backgroundImages);
+
+
 export function getImageUrls(type: ImageTypes): string[] {
   let imageFilenames: readonly string[] = [];
-  let imageMap: Record<string, string>;
+  let imageLookup: Map<string, string>;
 
   switch (type) {
     case 'ALL':
       imageFilenames = imageConfig.ALL;
-      imageMap = allImages;
+      imageLookup = allImagesLookup;
       break;
     case 'PORTRAITS':
       imageFilenames = imageConfig.PORTRAITS;
-      imageMap = portraitImages;
+      imageLookup = portraitImagesLookup;
       break;
     case 'BACKGROUNDS':
       imageFilenames = imageConfig.BACKGROUNDS;
-      imageMap = backgroundImages;
+      imageLookup = backgroundImagesLookup;
       break;
     default:
       return [];
   }
 
   return imageFilenames
-    .map((filename) => {
-      // Find the matching image in the glob results
-      // The glob key will be like '/src/assets/All/all-1.webp'
-      const imagePath = Object.keys(imageMap).find((key) => key.endsWith(filename));
-      return imagePath ? imageMap[imagePath] : null;
-    })
-    .filter((url): url is string => url !== null);
+    .map((filename) => imageLookup.get(filename))
+    .filter((url): url is string => url !== undefined);
 }
